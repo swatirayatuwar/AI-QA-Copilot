@@ -10,6 +10,20 @@ servers:
 tags:
   - name: health
     description: Health operations
+  - name: workspace
+    description: Workspace and dashboard operations
+  - name: projects
+    description: Project operations
+  - name: requirements
+    description: Requirement operations
+  - name: test-design
+    description: Test design operations
+  - name: test-cases
+    description: Test case operations
+  - name: defects
+    description: Defect operations
+  - name: activity
+    description: Activity operations
 paths:
   /healthz:
     get:
@@ -24,7 +38,223 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/HealthStatus"
+  /dashboard:
+    get:
+      operationId: getDashboard
+      tags: [workspace]
+      summary: Get workspace dashboard
+      responses:
+        "200":
+          description: Dashboard summary
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Dashboard"
+  /projects:
+    get:
+      operationId: listProjects
+      tags: [projects]
+      summary: List projects
+      responses:
+        "200":
+          description: Projects
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Project"
+    post:
+      operationId: createProject
+      tags: [projects]
+      summary: Create a project
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ProjectInput"
+      responses:
+        "201":
+          description: Created project
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Project"
+  /requirements:
+    get:
+      operationId: listRequirements
+      tags: [requirements]
+      summary: List requirements
+      parameters:
+        - $ref: "#/components/parameters/ProjectId"
+        - name: search
+          in: query
+          schema:
+            type: string
+        - name: status
+          in: query
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Requirements
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Requirement"
+    post:
+      operationId: createRequirement
+      tags: [requirements]
+      summary: Create a requirement
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/RequirementInput"
+      responses:
+        "201":
+          description: Created requirement
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Requirement"
+  /test-design/scenarios:
+    get:
+      operationId: listScenarios
+      tags: [test-design]
+      summary: List test scenarios
+      parameters:
+        - $ref: "#/components/parameters/ProjectId"
+      responses:
+        "200":
+          description: Test scenarios
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Scenario"
+    post:
+      operationId: createScenario
+      tags: [test-design]
+      summary: Create a test scenario
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ScenarioInput"
+      responses:
+        "201":
+          description: Created scenario
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Scenario"
+  /test-cases:
+    get:
+      operationId: listTestCases
+      tags: [test-cases]
+      summary: List test cases
+      parameters:
+        - $ref: "#/components/parameters/ProjectId"
+        - name: search
+          in: query
+          schema:
+            type: string
+        - name: automationStatus
+          in: query
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Test cases
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/TestCase"
+    post:
+      operationId: createTestCase
+      tags: [test-cases]
+      summary: Create a test case
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TestCaseInput"
+      responses:
+        "201":
+          description: Created test case
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TestCase"
+  /defects:
+    get:
+      operationId: listDefects
+      tags: [defects]
+      summary: List defects
+      parameters:
+        - $ref: "#/components/parameters/ProjectId"
+        - name: status
+          in: query
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Defects
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Defect"
+    post:
+      operationId: createDefect
+      tags: [defects]
+      summary: Create a defect
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DefectInput"
+      responses:
+        "201":
+          description: Created defect
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Defect"
+  /activity:
+    get:
+      operationId: listActivity
+      tags: [activity]
+      summary: List recent workspace activity
+      responses:
+        "200":
+          description: Activity items
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ActivityItem"
 components:
+  parameters:
+    ProjectId:
+      name: projectId
+      in: query
+      required: false
+      schema:
+        type: string
   schemas:
     HealthStatus:
       type: object
@@ -33,4 +263,207 @@ components:
           type: string
       required:
         - status
+    Project:
+      type: object
+      required: [id, name, key, description, applicationType, platform, environment, testCases, requirements, coverage, status]
+      properties:
+        id: { type: string }
+        name: { type: string }
+        key: { type: string }
+        description: { type: string }
+        applicationType: { type: string }
+        platform: { type: string }
+        environment: { type: string }
+        stack: { type: string }
+        repository: { type: ["string", "null"] }
+        requirements: { type: integer }
+        testCases: { type: integer }
+        coverage: { type: integer }
+        status: { type: string }
+        updatedAt: { type: string }
+    ProjectInput:
+      type: object
+      required: [name, key, description, applicationType, platform, environment]
+      properties:
+        name: { type: string, minLength: 1 }
+        key: { type: string, minLength: 2 }
+        description: { type: string }
+        applicationType: { type: string }
+        platform: { type: string }
+        environment: { type: string }
+        stack: { type: string }
+    Dashboard:
+      type: object
+      required: [metrics, coverage, executionTrend, defects, recommendations]
+      properties:
+        metrics:
+          type: object
+          required: [requirements, testCases, automationCoverage, passRate, openDefects, criticalDefects]
+          properties:
+            requirements: { type: integer }
+            testCases: { type: integer }
+            automationCoverage: { type: integer }
+            passRate: { type: integer }
+            openDefects: { type: integer }
+            criticalDefects: { type: integer }
+        coverage:
+          type: array
+          items:
+            $ref: "#/components/schemas/MetricPoint"
+        executionTrend:
+          type: array
+          items:
+            $ref: "#/components/schemas/MetricPoint"
+        defects:
+          type: array
+          items:
+            $ref: "#/components/schemas/MetricPoint"
+        recommendations:
+          type: array
+          items:
+            $ref: "#/components/schemas/Recommendation"
+    MetricPoint:
+      type: object
+      required: [label, value]
+      properties:
+        label: { type: string }
+        value: { type: integer }
+        secondary: { type: ["integer", "null"] }
+    Recommendation:
+      type: object
+      required: [id, title, detail, severity]
+      properties:
+        id: { type: string }
+        title: { type: string }
+        detail: { type: string }
+        severity: { type: string }
+    Requirement:
+      type: object
+      required: [id, key, title, description, priority, status, risk, coverage, linkedTestCases, updatedAt]
+      properties:
+        id: { type: string }
+        key: { type: string }
+        title: { type: string }
+        description: { type: string }
+        priority: { type: string }
+        status: { type: string }
+        risk: { type: string }
+        coverage: { type: integer }
+        linkedTestCases: { type: integer }
+        acceptanceCriteria:
+          type: array
+          items: { type: string }
+        createdBy: { type: string }
+        updatedAt: { type: string }
+    RequirementInput:
+      type: object
+      required: [projectId, title, description, priority, status, risk]
+      properties:
+        projectId: { type: string }
+        title: { type: string, minLength: 1 }
+        description: { type: string }
+        priority: { type: string }
+        status: { type: string }
+        risk: { type: string }
+    Scenario:
+      type: object
+      required: [id, key, title, description, risk, priority, requirement, testType, status]
+      properties:
+        id: { type: string }
+        key: { type: string }
+        title: { type: string }
+        description: { type: string }
+        risk: { type: string }
+        priority: { type: string }
+        requirement: { type: string }
+        testType: { type: string }
+        status: { type: string }
+    ScenarioInput:
+      type: object
+      required: [projectId, title, description, risk, priority, requirement, testType]
+      properties:
+        projectId: { type: string }
+        title: { type: string }
+        description: { type: string }
+        risk: { type: string }
+        priority: { type: string }
+        requirement: { type: string }
+        testType: { type: string }
+    TestCase:
+      type: object
+      required: [id, key, title, requirement, scenario, module, priority, severity, testType, automationStatus, status, steps]
+      properties:
+        id: { type: string }
+        key: { type: string }
+        title: { type: string }
+        requirement: { type: string }
+        scenario: { type: string }
+        module: { type: string }
+        preconditions: { type: string }
+        testData: { type: string }
+        steps:
+          type: array
+          items: { type: string }
+        expectedResult: { type: string }
+        priority: { type: string }
+        severity: { type: string }
+        testType: { type: string }
+        automationStatus: { type: string }
+        status: { type: string }
+        tags:
+          type: array
+          items: { type: string }
+    TestCaseInput:
+      type: object
+      required: [projectId, title, requirement, module, priority, severity, testType]
+      properties:
+        projectId: { type: string }
+        title: { type: string }
+        requirement: { type: string }
+        scenario: { type: string }
+        module: { type: string }
+        priority: { type: string }
+        severity: { type: string }
+        testType: { type: string }
+    Defect:
+      type: object
+      required: [id, key, title, description, environment, build, severity, priority, status, assignee, reporter, createdAt]
+      properties:
+        id: { type: string }
+        key: { type: string }
+        title: { type: string }
+        description: { type: string }
+        requirement: { type: ["string", "null"] }
+        testCase: { type: ["string", "null"] }
+        environment: { type: string }
+        build: { type: string }
+        severity: { type: string }
+        priority: { type: string }
+        status: { type: string }
+        assignee: { type: string }
+        reporter: { type: string }
+        createdAt: { type: string }
+        updatedAt: { type: string }
+    DefectInput:
+      type: object
+      required: [projectId, title, description, environment, build, severity, priority]
+      properties:
+        projectId: { type: string }
+        title: { type: string }
+        description: { type: string }
+        environment: { type: string }
+        build: { type: string }
+        severity: { type: string }
+        priority: { type: string }
+        assignee: { type: string }
+    ActivityItem:
+      type: object
+      required: [id, action, subject, actor, timestamp, category]
+      properties:
+        id: { type: string }
+        action: { type: string }
+        subject: { type: string }
+        actor: { type: string }
+        timestamp: { type: string }
+        category: { type: string }
 

@@ -1,0 +1,1385 @@
+Build a production-style SaaS web application called **AI QA Copilot**.
+
+The product is an AI-powered Quality Engineering and Software Testing platform for QA engineers, QA leads, developers, and engineering teams.
+
+PRIMARY PRODUCT PROMISE:
+
+"From requirement to release confidence."
+
+The platform should help teams move through:
+
+Requirement
+→ Requirement Analysis
+→ Risk Analysis
+→ Test Design
+→ Test Cases
+→ Test Data
+→ API Testing
+→ UI Automation
+→ Test Execution
+→ Defect Management
+→ QA Reporting
+→ Release Quality Summary
+
+IMPORTANT:
+I am a non-coding user and I want Lovable to build the application for me.
+
+Build a REAL application foundation, not merely a marketing landing page or static prototype.
+
+The UI, navigation, data structures, workflows and components should be designed as if this could eventually become a commercial enterprise QA product.
+
+Where external AI/API functionality is unavailable, create clean service interfaces and realistic demo/mock data so the application remains usable.
+
+Do not expose API keys in frontend code.
+
+==================================================
+
+1. PRODUCT IDENTITY
+   ==================================================
+
+Product name:
+
+AI QA Copilot
+
+Tagline:
+
+"From requirement to release confidence."
+
+Secondary description:
+
+"AI-assisted quality engineering for modern software teams."
+
+Design direction:
+
+* Enterprise SaaS
+* Modern
+* Minimal
+* Professional
+* High information density without feeling cluttered
+* Excellent typography
+* Consistent spacing
+* Accessible contrast
+* Responsive desktop/tablet design
+* Light and dark themes
+* Subtle animations only where useful
+* Avoid excessive gradients
+* Avoid generic chatbot aesthetics
+
+The application should look closer to a professional engineering platform than a consumer AI application.
+
+==================================================
+2. APPLICATION ARCHITECTURE
+===========================
+
+Create the following top-level structure:
+
+Workspace
+└── Projects
+├── Requirements
+├── Test Design
+├── Test Cases
+├── Test Data
+├── API Testing
+├── Automation
+├── Test Execution
+├── Defects
+├── Reports
+└── Activity / Audit
+
+The application must support multiple projects.
+
+Each project must have isolated QA artifacts.
+
+==================================================
+3. AUTHENTICATION AND USER ROLES
+================================
+
+Create authentication screens:
+
+* Sign in
+* Sign up
+* Forgot password
+* Reset password
+
+Create role-based access structure.
+
+Roles:
+
+ADMIN
+QA_LEAD
+QA_ENGINEER
+DEVELOPER
+VIEWER
+
+Permissions should be designed around:
+
+Workspace
+Project
+Requirements
+Test Cases
+Executions
+Defects
+Reports
+Settings
+
+Implement the permission model in the application architecture even if some advanced permission enforcement is initially mocked.
+
+==================================================
+4. GLOBAL NAVIGATION
+====================
+
+Left sidebar:
+
+Dashboard
+
+Workspace
+
+* Projects
+* Team
+
+Quality Engineering
+
+* Requirements
+* Test Design
+* Test Cases
+* Test Data
+* API Testing
+* Automation
+* Test Execution
+* Defects
+
+Insights
+
+* Coverage
+* Risk
+* Reports
+
+AI
+
+* AI QA Copilot
+
+Administration
+
+* Integrations
+* Audit Log
+* Settings
+
+Top navigation:
+
+Project selector
+Global search
+Notifications
+Help
+User profile
+
+==================================================
+5. DASHBOARD
+============
+
+Create a professional engineering dashboard.
+
+Display:
+
+Requirements
+Test Cases
+Automation Coverage
+Execution Pass Rate
+Open Defects
+Critical Defects
+Requirement Coverage
+Risk Level
+
+Include:
+
+* KPI cards
+* Coverage chart
+* Test execution trend
+* Defect trend
+* Requirement coverage
+* Recent activity
+* Recent projects
+* AI recommendations
+
+Example AI recommendation:
+
+"3 requirements have incomplete acceptance criteria."
+
+"12 test cases are not linked to a requirement."
+
+"5 high-risk scenarios have no automation coverage."
+
+Each recommendation should be actionable.
+
+==================================================
+6. PROJECT MANAGEMENT
+=====================
+
+Allow creation of projects.
+
+Project fields:
+
+Project Name
+Project Key
+Description
+Application Type
+Platform
+Environment
+Technology Stack
+Repository
+Default Automation Framework
+Default Test Type
+
+Application types:
+
+Web
+Mobile
+API
+IoT
+Desktop
+SaaS
+E-commerce
+Banking
+Healthcare
+Other
+
+Each project should have:
+
+Overview
+Requirements
+Test Assets
+Execution
+Defects
+Reports
+Settings
+
+==================================================
+7. REQUIREMENT MANAGEMENT
+=========================
+
+Create a professional Requirements module.
+
+Requirements table columns:
+
+Requirement ID
+Title
+Description
+Priority
+Status
+Risk
+Coverage
+Linked Test Cases
+Created By
+Updated At
+
+Statuses:
+
+Draft
+Ready for QA
+In Testing
+Validated
+Blocked
+Completed
+
+Requirement detail page:
+
+Overview
+Acceptance Criteria
+Dependencies
+Risks
+Linked Test Cases
+Linked Defects
+Coverage
+History
+
+Add:
+
+Create Requirement
+Edit
+Duplicate
+Archive
+Search
+Filter
+Sort
+
+==================================================
+8. AI REQUIREMENT ANALYSIS
+==========================
+
+Add an "Analyze with AI" action.
+
+The AI should analyze:
+
+Requirement clarity
+Functional requirements
+Acceptance criteria
+Missing information
+Ambiguities
+Dependencies
+Assumptions
+Edge cases
+Negative scenarios
+Risk areas
+Security considerations
+Integration considerations
+Data considerations
+
+AI must NOT invent missing requirements.
+
+If information is unavailable, explicitly display:
+
+"Information required"
+
+or
+
+"Unable to determine from supplied requirement."
+
+Create a confidence indicator:
+
+High
+Medium
+Low
+
+The confidence indicator must describe AI confidence in the generated analysis, not claim factual certainty.
+
+==================================================
+9. TRACEABILITY
+===============
+
+This is a critical enterprise feature.
+
+Create traceability between:
+
+Requirement
+↓
+Acceptance Criteria
+↓
+Test Scenario
+↓
+Test Case
+↓
+Automation
+↓
+Execution
+↓
+Defect
+
+Create a Traceability Matrix.
+
+Columns:
+
+Requirement
+Scenario
+Test Case
+Automation
+Latest Execution
+Defects
+Coverage
+
+Provide filters for:
+
+Covered
+Partially Covered
+Not Covered
+High Risk
+Automation Missing
+
+==================================================
+10. TEST DESIGN
+===============
+
+Create a Test Design module.
+
+Allow users to generate:
+
+Functional scenarios
+Positive scenarios
+Negative scenarios
+Boundary scenarios
+Equivalence partitioning
+Decision table scenarios
+State transition scenarios
+Exploratory scenarios
+Regression scenarios
+Integration scenarios
+Compatibility scenarios
+
+Each scenario should contain:
+
+Scenario ID
+Title
+Description
+Risk
+Priority
+Requirement
+Test Type
+Status
+
+Allow conversion:
+
+Scenario → Test Case
+
+==================================================
+11. TEST CASE MANAGEMENT
+========================
+
+Create a professional test case management system.
+
+Fields:
+
+Test Case ID
+Title
+Requirement
+Scenario
+Module
+Preconditions
+Test Data
+Steps
+Expected Result
+Priority
+Severity
+Test Type
+Automation Status
+Status
+Tags
+
+Test types:
+
+Functional
+Regression
+Smoke
+Sanity
+Integration
+System
+UI
+API
+Negative
+Boundary
+Exploratory
+Compatibility
+Security
+
+Statuses:
+
+Draft
+Ready
+Approved
+Deprecated
+
+Automation status:
+
+Manual
+Candidate
+Automated
+Automation Failed
+Not Suitable
+
+Provide:
+
+Create
+Edit
+Duplicate
+Delete
+Bulk edit
+Bulk select
+Search
+Filter
+Sort
+Tag
+Export
+
+==================================================
+12. AI TEST CASE GENERATION
+===========================
+
+Allow generation from:
+
+Requirement
+User Story
+Acceptance Criteria
+Existing Test Scenario
+API Specification
+Uploaded context
+
+AI generation should produce:
+
+Functional coverage
+Positive cases
+Negative cases
+Boundary cases
+Error handling
+Validation
+Permission scenarios
+Data scenarios
+Integration scenarios
+Regression scenarios
+
+Prevent duplicate test cases where possible.
+
+Provide a "Why this test matters" explanation for AI-generated high-risk tests.
+
+==================================================
+13. TEST DATA MANAGEMENT
+========================
+
+Create Test Data module.
+
+Allow users to define:
+
+Field Name
+Data Type
+Required
+Format
+Min
+Max
+Allowed Values
+Business Rules
+
+Generate:
+
+Valid data
+Invalid data
+Boundary values
+Null values
+Empty values
+Duplicate values
+Special characters
+Large inputs
+Date variations
+Locale variations
+
+Never generate real personal information.
+
+Use clearly synthetic data.
+
+Allow CSV/Excel export.
+
+==================================================
+14. API TESTING
+===============
+
+Create API Testing workspace.
+
+Support:
+
+GET
+POST
+PUT
+PATCH
+DELETE
+
+Request configuration:
+
+URL
+Headers
+Query Parameters
+Path Parameters
+Authentication
+Request Body
+
+Response analysis:
+
+Status code
+Headers
+Body
+Schema
+Response time
+
+AI should generate:
+
+Positive tests
+Negative tests
+Boundary tests
+Authentication tests
+Authorization tests
+Validation tests
+Schema tests
+Error handling tests
+
+Create a structured API test table.
+
+Allow conversion:
+
+API Test → Test Case
+
+Future-ready architecture for Postman integration.
+
+==================================================
+15. AUTOMATION GENERATOR
+========================
+
+Create an Automation module.
+
+Primary framework:
+
+Playwright + Python + Pytest + Page Object Model
+
+Additional framework options:
+
+Playwright + TypeScript
+Selenium + Python
+Cypress + TypeScript
+
+Generate:
+
+Test file
+Page object
+Locators
+Assertions
+Fixtures
+Test data
+Configuration guidance
+
+IMPORTANT:
+
+Never invent real URLs, credentials or selectors.
+
+If information is missing, use clearly marked placeholders such as:
+
+YOUR_URL
+YOUR_SELECTOR
+YOUR_TEST_DATA
+
+Display generated code in a proper code editor.
+
+Actions:
+
+Copy
+Download
+Regenerate
+Explain Code
+
+==================================================
+16. TEST EXECUTION
+==================
+
+Create Test Execution module.
+
+Allow creation of:
+
+Test Run
+
+Fields:
+
+Run Name
+Build
+Version
+Environment
+Tester
+Test Suite
+Execution Date
+
+Execution statuses:
+
+Passed
+Failed
+Blocked
+Skipped
+Not Run
+
+Display:
+
+Total
+Passed
+Failed
+Blocked
+Skipped
+Pass Rate
+
+Allow linking:
+
+Execution → Test Case
+Execution → Defect
+Execution → Requirement
+
+Create execution history.
+
+==================================================
+17. DEFECT MANAGEMENT
+=====================
+
+Create a professional defect management module.
+
+Defect fields:
+
+Defect ID
+Title
+Description
+Requirement
+Test Case
+Environment
+Build
+Severity
+Priority
+Status
+Assignee
+Reporter
+Steps
+Expected Result
+Actual Result
+Attachments
+Created Date
+Updated Date
+
+Severity:
+
+Blocker
+Critical
+Major
+Minor
+Trivial
+
+Status:
+
+New
+Open
+In Progress
+Fixed
+Retest
+Reopened
+Closed
+Rejected
+Deferred
+
+==================================================
+18. AI BUG ASSISTANT
+====================
+
+Allow user to enter rough notes.
+
+Example:
+
+"Login button doesn't work after entering correct password."
+
+AI should generate:
+
+Title
+Description
+Preconditions
+Steps
+Expected Result
+Actual Result
+Environment
+Severity suggestion
+Priority suggestion
+Reproducibility
+
+IMPORTANT:
+
+Severity and priority are suggestions only.
+
+The final values must remain editable by the QA team.
+
+Create Jira-compatible output.
+
+==================================================
+19. AI QA COPILOT
+=================
+
+Create a contextual AI assistant.
+
+The assistant should understand the currently selected project and available project context.
+
+Examples:
+
+"Analyze this requirement."
+
+"Find coverage gaps."
+
+"Generate negative test cases."
+
+"Which requirements have no tests?"
+
+"Create Playwright automation for this test case."
+
+"Summarize failed tests."
+
+"Identify high-risk areas."
+
+"Find duplicate test cases."
+
+"Create a release QA summary."
+
+The assistant should reference project artifacts when available.
+
+Do not fabricate project information.
+
+If required context is unavailable, say so.
+
+==================================================
+20. RISK ENGINE
+===============
+
+Create a Risk Analysis module.
+
+Risk factors:
+
+Business impact
+Requirement complexity
+Change frequency
+Integration dependency
+Data sensitivity
+User impact
+Historical failures
+Automation coverage
+Requirement ambiguity
+
+Display:
+
+Risk Score
+Risk Level
+Reason
+Recommended Testing
+
+Risk levels:
+
+Low
+Medium
+High
+Critical
+
+The score should be transparent and explain which factors contributed to it.
+
+==================================================
+21. COVERAGE
+============
+
+Create Coverage dashboard.
+
+Metrics:
+
+Requirement Coverage
+Scenario Coverage
+Test Case Coverage
+Automation Coverage
+Execution Coverage
+Defect Coverage
+
+Provide:
+
+Coverage percentage
+Trend
+Uncovered requirements
+Partially covered requirements
+High-risk uncovered areas
+
+Create a professional traceability visualization.
+
+==================================================
+22. RELEASE QUALITY REPORT
+==========================
+
+Create a Release Report module.
+
+Input:
+
+Release
+Build
+Environment
+Test Run
+
+Generate:
+
+Executive Summary
+Test Execution Summary
+Requirement Coverage
+Automation Coverage
+Defect Summary
+Critical Issues
+Risk Areas
+Open Defects
+Blocked Tests
+Regression Summary
+Known Limitations
+Recommended Next Actions
+
+Include a professional release-quality report layout.
+
+Do not automatically declare a release "safe" or "unsafe."
+
+Instead display evidence and configurable release criteria.
+
+==================================================
+23. REPORTING
+=============
+
+Create reports:
+
+QA Summary
+Test Execution
+Requirement Coverage
+Automation Coverage
+Defect Trends
+Risk Analysis
+Regression Summary
+
+Charts should be clear and professional.
+
+Allow:
+
+Export PDF
+Export CSV
+Export Excel
+Copy Summary
+
+==================================================
+24. HISTORY AND VERSIONING
+==========================
+
+Maintain history for important artifacts.
+
+Track:
+
+Created
+Updated
+Deleted
+Generated
+Approved
+Executed
+Linked
+Unlinked
+
+Show:
+
+User
+Timestamp
+Action
+Previous Value
+New Value
+
+Create version history for requirements and test cases.
+
+==================================================
+25. AUDIT LOG
+=============
+
+Create an enterprise-style audit log.
+
+Track:
+
+Authentication events
+Project changes
+Requirement changes
+Test case changes
+Defect changes
+Execution changes
+Permission changes
+Integration changes
+
+Provide:
+
+Search
+Filter
+Date range
+User filter
+Action filter
+
+==================================================
+26. TEAM COLLABORATION
+======================
+
+Project members can be assigned roles.
+
+Allow:
+
+Invite member
+Remove member
+Change role
+Assign defect
+Assign test case
+Assign test run
+
+Add comments to:
+
+Requirements
+Test Cases
+Defects
+Test Runs
+
+==================================================
+27. INTEGRATIONS
+================
+
+Create an Integrations page.
+
+Future-ready integrations:
+
+Jira
+GitHub
+GitLab
+Azure DevOps
+Postman
+Slack
+Microsoft Teams
+CI/CD
+
+For now, create clean integration configuration screens.
+
+Do not claim an integration is connected unless it actually is.
+
+==================================================
+28. AI SAFETY AND QUALITY CONTROLS
+==================================
+
+Every AI-generated artifact should include:
+
+AI Generated indicator
+
+Allow:
+
+Edit
+Approve
+Reject
+Regenerate
+
+Do not allow AI output to silently overwrite approved QA artifacts.
+
+AI should never invent:
+
+Credentials
+Real customer data
+Real URLs
+Real selectors
+Actual execution results
+Actual defects
+Actual project information
+
+Clearly distinguish:
+
+AI suggestion
+User-entered data
+System-generated data
+Verified execution data
+
+==================================================
+29. DATABASE / DATA MODEL
+=========================
+
+Create a scalable relational data model with entities conceptually equivalent to:
+
+Users
+Workspaces
+WorkspaceMembers
+Projects
+Requirements
+AcceptanceCriteria
+Risks
+TestScenarios
+TestCases
+TestSteps
+TestDataSets
+ApiTests
+AutomationAssets
+TestRuns
+TestExecutions
+Defects
+Comments
+Attachments
+Reports
+Integrations
+AuditLogs
+AiGenerations
+Tags
+Versions
+
+Use relationships between entities rather than storing everything as unstructured text.
+
+Every major QA artifact should have:
+
+ID
+Project ID
+Created By
+Created At
+Updated By
+Updated At
+Status
+
+Use soft deletion where appropriate.
+
+==================================================
+30. SEARCH
+==========
+
+Create global search.
+
+Search across:
+
+Projects
+Requirements
+Test Cases
+Defects
+API Tests
+Automation
+Reports
+
+Support filtering by:
+
+Project
+Status
+Priority
+Severity
+Assignee
+Created date
+Updated date
+Tags
+
+==================================================
+31. NOTIFICATIONS
+=================
+
+Create notification center.
+
+Examples:
+
+Test run completed
+Defect assigned
+Requirement updated
+Test case approved
+AI generation completed
+Coverage dropped
+Critical defect created
+
+==================================================
+32. SETTINGS
+============
+
+Settings sections:
+
+Profile
+Workspace
+Project
+Team
+Roles
+AI Preferences
+Default Framework
+Default Language
+Notifications
+Appearance
+Integrations
+Security
+
+Theme:
+
+Light
+Dark
+System
+
+==================================================
+33. DEMO PROJECT
+================
+
+Create a realistic demo project:
+
+Project:
+
+Smart Home IoT Platform
+
+Description:
+
+Mobile application used to pair and manage smart home devices.
+
+Sample requirement:
+
+"Users should be able to pair a smart device with the mobile application using Bluetooth and view the device connection status."
+
+Create realistic demo:
+
+Requirements
+Scenarios
+Test Cases
+Test Data
+Defects
+Execution data
+Coverage data
+Automation examples
+Reports
+
+Use synthetic data only.
+
+==================================================
+34. UI DETAILS
+==============
+
+Use a professional design system.
+
+Components:
+
+Data tables
+Tabs
+Cards
+Drawers
+Modals
+Dropdowns
+Search
+Filters
+Badges
+Tooltips
+Breadcrumbs
+Progress indicators
+Charts
+Code editor
+Rich text editor
+Empty states
+Loading states
+Error states
+Confirmation dialogs
+
+Important:
+
+Do not overcrowd screens.
+
+Use progressive disclosure.
+
+For complex data, use:
+
+List → Detail → Related Artifacts
+
+instead of displaying everything at once.
+
+==================================================
+35. ACCESSIBILITY
+=================
+
+Follow modern accessibility principles.
+
+Provide:
+
+Keyboard navigation
+Accessible labels
+Good contrast
+Focus states
+Meaningful error messages
+Responsive layout
+
+==================================================
+36. SECURITY ARCHITECTURE
+=========================
+
+Design for:
+
+Authentication
+Authorization
+Project isolation
+Secure secrets
+Input validation
+API key protection
+Audit logging
+
+Never expose secret keys in browser/client-side code.
+
+Never store credentials in generated automation unless explicitly supplied and securely handled.
+
+==================================================
+37. PERFORMANCE
+===============
+
+Use:
+
+Pagination
+Lazy loading where appropriate
+Debounced search
+Efficient tables
+Loading skeletons
+Optimistic UI only where safe
+
+Do not load huge datasets unnecessarily.
+
+==================================================
+38. AI SERVICE ARCHITECTURE
+===========================
+
+Create an abstraction for AI providers.
+
+Conceptually:
+
+AI Service
+├── Requirement Analyzer
+├── Test Generator
+├── Bug Assistant
+├── API Test Generator
+├── Automation Generator
+├── Risk Analyzer
+└── Report Generator
+
+Do not hard-code the application around one AI provider.
+
+Keep the provider layer replaceable.
+
+==================================================
+39. DEMO MODE
+=============
+
+The application must work in Demo Mode without an external AI API.
+
+Use clearly labeled demo responses.
+
+Provide a banner:
+
+"Demo Mode — Connect an AI provider to enable live AI generation."
+
+Do not pretend mock responses are generated by a real AI model.
+
+==================================================
+40. PRODUCT QUALITY
+===================
+
+The final result should feel like an actual enterprise QA platform.
+
+Avoid:
+
+Generic chatbot UI
+Unstructured text dumps
+Fake buttons
+Broken navigation
+Placeholder lorem ipsum
+Invented integrations
+Unclear terminology
+
+Every major button should either perform a meaningful action or clearly state that the feature is coming later.
+
+==================================================
+41. INITIAL DELIVERY
+====================
+
+Build the complete foundation first.
+
+Priority order:
+
+1. Authentication
+2. Workspace
+3. Projects
+4. Dashboard
+5. Requirements
+6. Test Design
+7. Test Cases
+8. Traceability
+9. Test Data
+10. API Testing
+11. Automation
+12. Test Execution
+13. Defects
+14. Coverage
+15. Reports
+16. AI Copilot
+17. Integrations
+18. Settings
+19. Audit Log
+
+Make the core navigation and data relationships functional.
+
+Do not build only individual disconnected pages.
+
+==================================================
+42. FINAL PRODUCT POSITIONING
+=============================
+
+The product should be positioned as:
+
+"AI-assisted Quality Engineering Platform"
+
+NOT:
+
+"AI test case generator."
+
+The long-term product should support the complete QA lifecycle from requirement analysis through release reporting.
+
+Build the foundation so additional AI capabilities, integrations, automation execution and CI/CD capabilities can be added without redesigning the entire application.

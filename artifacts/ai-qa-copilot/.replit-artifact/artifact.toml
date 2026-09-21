@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "AI QA Copilot"
+description = "An enterprise quality engineering workspace that helps QA teams move from requirements to release confidence with traceable test assets, execution insights, defect management, and clearly labeled demo AI assistance."
+version = "1.0.0"
+id = "artifacts/ai-qa-copilot"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 24270
+
+[services.development]
+run = "pnpm --filter @workspace/ai-qa-copilot run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/ai-qa-copilot", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/ai-qa-copilot/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "24270"
+BASE_PATH = "/"
