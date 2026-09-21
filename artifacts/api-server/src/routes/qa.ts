@@ -432,10 +432,11 @@ router.post("/requirements", async (req, res) => {
   await ensureSeed();
   const body = CreateRequirementBody.parse(req.body);
   const now = new Date();
+  const [{ value: requirementCount }] = await db.select({ value: count() }).from(requirementsTable);
   const created = await db.insert(requirementsTable).values({
     id: `req-${randomUUID().slice(0, 8)}`,
     projectId: body.projectId,
-    key: `REQ-${Math.floor(100 + Math.random() * 899)}`,
+    key: `REQ-${101 + Number(requirementCount)}`,
     title: body.title,
     description: body.description,
     priority: body.priority,
@@ -464,10 +465,11 @@ router.post("/test-design/scenarios", async (req, res) => {
   await ensureSeed();
   const body = CreateScenarioBody.parse(req.body);
   const now = new Date();
+  const [{ value: scenarioCount }] = await db.select({ value: count() }).from(scenariosTable);
   const created = await db.insert(scenariosTable).values({
     id: `scn-${randomUUID().slice(0, 8)}`,
     projectId: body.projectId,
-    key: `SCN-${Math.floor(100 + Math.random() * 899)}`,
+    key: `SCN-${201 + Number(scenarioCount)}`,
     title: body.title,
     description: body.description,
     risk: body.risk,
@@ -496,10 +498,11 @@ router.post("/test-cases", async (req, res) => {
   await ensureSeed();
   const body = CreateTestCaseBody.parse(req.body);
   const now = new Date();
+  const [{ value: testCaseCount }] = await db.select({ value: count() }).from(testCasesTable);
   const created = await db.insert(testCasesTable).values({
     id: `tc-${randomUUID().slice(0, 8)}`,
     projectId: body.projectId,
-    key: `TC-${Math.floor(100 + Math.random() * 899)}`,
+    key: `TC-${301 + Number(testCaseCount)}`,
     title: body.title,
     requirement: body.requirement,
     scenario: body.scenario ?? "",
@@ -527,10 +530,11 @@ router.post("/defects", async (req, res) => {
   await ensureSeed();
   const body = CreateDefectBody.parse(req.body);
   const now = new Date();
+  const [{ value: defectCount }] = await db.select({ value: count() }).from(defectsTable);
   const created = await db.insert(defectsTable).values({
     id: `defect-${randomUUID().slice(0, 8)}`,
     projectId: body.projectId,
-    key: `BUG-${Math.floor(100 + Math.random() * 899)}`,
+    key: `BUG-${417 + Number(defectCount)}`,
     title: body.title,
     description: body.description,
     requirement: null,
