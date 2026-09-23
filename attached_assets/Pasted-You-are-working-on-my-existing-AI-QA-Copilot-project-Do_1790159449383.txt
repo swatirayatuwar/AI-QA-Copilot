@@ -1,0 +1,523 @@
+You are working on my existing AI-QA-Copilot project. Do NOT create a new project, do NOT create a new repository, and do NOT rebuild the application from scratch.
+
+Your job is to take the existing application from its current state to a reliable, industry-standard MVP that can later be used to sell professional QA deliverables through Etsy.
+
+IMPORTANT:
+
+* Preserve the existing UI/design where practical.
+* Reuse existing components, routes, APIs, types and architecture wherever possible.
+* Do not add unnecessary features.
+* Do not stop after identifying problems — fix them.
+* Do not ask me to manually test things that you can test yourself.
+* You must verify your changes by running the application, tests, typecheck and production build.
+* If something is currently mocked/demo-only, identify it and replace it with a functional implementation where required for the core product.
+* Do not claim something works unless you actually verify it.
+
+==================================================
+PHASE 1 — COMPLETE CODEBASE AUDIT
+=================================
+
+First inspect the entire existing repository, including:
+
+* artifacts/ai-qa-copilot
+* artifacts/api-server
+* lib
+* scripts
+* package.json files
+* existing API routes
+* existing AI-related code
+* upload handling
+* report/export code
+* database/schema code
+* frontend routes/pages
+* components
+* hooks
+* types
+* configuration
+* environment-variable usage
+
+Determine exactly which functionality is:
+
+1. Fully functional
+2. Partially functional
+3. Mock/demo data
+4. UI-only
+5. Broken
+6. Missing
+
+Do not rewrite working functionality unnecessarily.
+
+Create an internal implementation plan based on the audit and then execute it.
+
+==================================================
+PHASE 2 — CORE PRODUCT WORKFLOW
+===============================
+
+The primary product workflow must be:
+
+PROJECT
+→ REQUIREMENT INPUT
+→ AI REQUIREMENT ANALYSIS
+→ QA TEST DESIGN
+→ TEST CASE GENERATION
+→ TRACEABILITY
+→ QA REPORT
+→ EXPORT
+
+The workflow must work with different projects and must NOT depend on the existing Smart Home IoT/R3 demo data.
+
+==================================================
+PHASE 3 — REQUIREMENT INPUT
+===========================
+
+Make the requirement input workflow production-ready for the MVP.
+
+Support the file types that the existing architecture can safely support, prioritizing:
+
+* PDF
+* DOCX
+* TXT
+* CSV where appropriate
+
+Implement:
+
+* file validation
+* unsupported-file handling
+* empty-file handling
+* reasonable file-size validation
+* duplicate/replace handling
+* clear upload progress
+* loading state
+* error state
+* retry behavior
+* successful upload state
+
+The application must extract usable requirement text from uploaded documents.
+
+Do not silently analyze hard-coded demo text when the user has uploaded a real document.
+
+==================================================
+PHASE 4 — REAL AI REQUIREMENT ANALYSIS
+======================================
+
+Inspect the existing AI implementation and API architecture.
+
+Use the existing AI integration rather than introducing unnecessary new AI providers.
+
+The AI analysis should produce structured results containing, where applicable:
+
+1. Requirement summary
+2. Functional requirements
+3. Non-functional requirements
+4. Ambiguous requirements
+5. Missing information
+6. Open questions
+7. Business rules
+8. Dependencies
+9. Risks
+10. Positive scenarios
+11. Negative scenarios
+12. Edge cases
+13. Boundary cases
+14. Security-related considerations
+15. Validation considerations
+16. Suggested test coverage
+
+The analysis MUST be based on the actual uploaded requirement content.
+
+If the AI provider/API is unavailable because of missing credentials, handle that gracefully with a clear error rather than displaying fake analysis as if it were real.
+
+Create a proper demo mode separately if useful.
+
+==================================================
+PHASE 5 — TEST SCENARIO GENERATION
+==================================
+
+Generate structured QA test scenarios from the analyzed requirements.
+
+Each scenario should contain appropriate fields such as:
+
+* Scenario ID
+* Requirement reference
+* Scenario title
+* Description
+* Test type
+* Priority
+* Risk
+* Preconditions
+* Expected behavior
+
+Include:
+
+* positive scenarios
+* negative scenarios
+* edge cases
+* boundary scenarios
+* validation scenarios
+* error handling scenarios
+
+Avoid duplicate scenarios.
+
+==================================================
+PHASE 6 — DETAILED TEST CASE GENERATION
+=======================================
+
+Generate professional detailed test cases.
+
+Each test case should support:
+
+* Test Case ID
+* Requirement ID/reference
+* Scenario ID
+* Test Case Title
+* Preconditions
+* Test Data
+* Test Steps
+* Expected Result
+* Priority
+* Severity/Risk
+* Test Type
+* Traceability reference
+
+Test steps and expected results must be meaningful and derived from the actual requirements.
+
+Do not generate generic filler test cases.
+
+==================================================
+PHASE 7 — TRACEABILITY
+======================
+
+Implement a real traceability relationship:
+
+Requirement
+→ Test Scenario
+→ Test Case
+
+The Coverage/Traceability screen should reflect the actual generated data.
+
+Show useful coverage information such as:
+
+* total requirements
+* covered requirements
+* uncovered requirements
+* total scenarios
+* total test cases
+* high-risk requirements
+* coverage percentage
+
+Do not use hard-coded numbers.
+
+==================================================
+PHASE 8 — REPORT GENERATION
+===========================
+
+Make Reports a real deliverable.
+
+Generate a professional QA report containing:
+
+* Project name
+* Analysis date
+* Requirement/document information
+* Executive summary
+* Requirement coverage summary
+* Requirement gaps
+* Ambiguities
+* Risks
+* QA recommendations
+* Test scenario summary
+* Test case summary
+* Detailed test cases
+* Traceability matrix
+* Coverage summary
+
+The report must use the current project's actual analysis data.
+
+==================================================
+PHASE 9 — EXPORTS
+=================
+
+Implement real downloadable exports.
+
+At minimum provide:
+
+1. Excel/XLSX
+2. CSV
+3. PDF
+4. JSON
+
+Exports must contain the actual generated data.
+
+Do not leave buttons that appear functional but do nothing.
+
+Use appropriate libraries already present in the project where possible.
+
+Verify that each exported file is actually generated successfully.
+
+==================================================
+PHASE 10 — PROJECT DATA
+=======================
+
+Remove dependency on hard-coded sample data.
+
+The user should be able to create/use a project with:
+
+* Project name
+* Description
+* Requirements
+* Analysis
+* Test scenarios
+* Test cases
+* Defects where supported
+* Reports
+
+Existing sample/demo data may remain only as an explicitly identified Demo Project.
+
+==================================================
+PHASE 11 — DEMO MODE
+====================
+
+Create a clearly separated Demo Mode using a realistic sample project.
+
+Use a simple example such as:
+
+"E-commerce Login & Checkout"
+
+The demo should demonstrate:
+
+* requirements
+* analysis
+* scenarios
+* test cases
+* risks
+* traceability
+* report/export
+
+Clearly label demo data so it is never mistaken for a customer's real analysis.
+
+==================================================
+PHASE 12 — UI/UX RELIABILITY
+============================
+
+Audit every existing major page.
+
+Verify:
+
+* Dashboard
+* Projects
+* Requirements
+* Test Design
+* Test Cases
+* Defects
+* Coverage
+* Reports
+* AI Copilot
+* Integrations
+* Settings
+* Activity
+
+Fix:
+
+* broken navigation
+* dead buttons
+* incorrect loading states
+* blank screens
+* unhandled errors
+* invalid API responses
+* missing empty states
+* inconsistent terminology
+* hard-coded data that should be dynamic
+
+Keep the current design system unless a change is necessary for usability.
+
+==================================================
+PHASE 13 — API / BACKEND RELIABILITY
+====================================
+
+Audit all frontend-to-backend calls.
+
+Verify:
+
+* API routes
+* request validation
+* response validation
+* error handling
+* timeout behavior
+* failed API handling
+* empty responses
+* malformed responses
+* frontend handling of 4xx/5xx responses
+
+Investigate any existing "426 Upgrade Required" or similar API/runtime issues.
+
+Do not hide errors.
+
+Do not replace a failed API call with fake successful data.
+
+==================================================
+PHASE 14 — SECURITY
+===================
+
+Audit the repository for:
+
+* API keys
+* secrets
+* passwords
+* tokens
+* credentials
+* sensitive environment variables
+
+Ensure secrets are not committed to the repository.
+
+Use environment variables where required.
+
+Do not expose server-side credentials to the frontend.
+
+==================================================
+PHASE 15 — AUTOMATED TESTING
+============================
+
+This is VERY IMPORTANT.
+
+You are responsible for verifying the application yourself.
+
+Create or improve automated tests for the critical workflow.
+
+At minimum test:
+
+1. Application starts successfully.
+2. Frontend loads.
+3. Main routes load.
+4. Project creation/use works.
+5. Requirement upload validation works.
+6. Requirement text extraction works where supported.
+7. AI analysis request/response handling works.
+8. Invalid AI/API response is handled.
+9. Test scenario generation works.
+10. Test case generation works.
+11. Traceability data is generated correctly.
+12. Coverage calculations use actual data.
+13. PDF export works.
+14. XLSX export works.
+15. CSV export works.
+16. JSON export works.
+17. Empty states work.
+18. Error states work.
+19. Demo mode works.
+20. Production build succeeds.
+
+Use the testing framework already present in the repository where possible.
+
+If appropriate, add focused API/unit/integration tests rather than introducing a huge new testing framework.
+
+==================================================
+PHASE 16 — ACTUAL VERIFICATION
+==============================
+
+After implementation, DO NOT simply say "implemented."
+
+Actually execute:
+
+* dependency installation/check
+* typecheck
+* lint if configured
+* automated tests
+* frontend build
+* backend build/start validation where applicable
+
+Then perform an end-to-end smoke test of the critical workflow:
+
+1. Start application.
+2. Open application.
+3. Create/select a project.
+4. Upload a sample requirement.
+5. Analyze it.
+6. Generate QA scenarios.
+7. Generate test cases.
+8. Verify traceability.
+9. Verify coverage.
+10. Generate report.
+11. Download PDF.
+12. Download XLSX.
+13. Download CSV.
+14. Download JSON.
+15. Verify downloaded files are non-empty and contain expected data.
+
+If external AI credentials are unavailable, test everything possible using a clearly separated deterministic/mock test provider and ensure the production path correctly reports missing credentials rather than pretending to have performed real AI analysis.
+
+==================================================
+PHASE 17 — FIX EVERYTHING FOUND
+===============================
+
+If any test fails:
+
+1. Investigate the root cause.
+2. Fix the implementation.
+3. Re-run the failed test.
+4. Re-run the complete relevant test suite.
+5. Re-run typecheck/build.
+
+Continue until the critical workflow passes or you reach a genuine external dependency that cannot be resolved from code.
+
+Do not stop after the first error.
+
+==================================================
+PHASE 18 — FINAL QUALITY CHECK
+==============================
+
+Before finishing, check for:
+
+* TypeScript errors
+* broken imports
+* unused/broken routes
+* console errors
+* API errors
+* dead buttons
+* fake data appearing as real data
+* hard-coded project metrics
+* missing loading states
+* missing error states
+* broken exports
+* broken navigation
+* security issues
+* build failures
+
+Do not introduce unrelated features.
+
+==================================================
+FINAL RESPONSE TO ME
+====================
+
+When finished, provide a concise implementation report with exactly these sections:
+
+1. COMPLETED
+
+   * List what you actually implemented.
+
+2. FIXED
+
+   * List bugs/problems you found and fixed.
+
+3. VERIFIED
+
+   * List the tests/checks you actually ran and their results.
+
+4. REMAINING
+
+   * Only list items that genuinely cannot be completed because of an external dependency or missing credential.
+
+5. HOW TO TEST MANUALLY
+
+   * Give me only the minimum manual checks that cannot reasonably be automated.
+
+6. FILES CHANGED
+
+   * List the important files changed.
+
+IMPORTANT:
+Do not claim a feature is working unless you verified it.
+Do not ask me to approve every small change.
+Do not create a new project.
+Do not rebuild the app from scratch.
+Do not add Jira/GitHub/Slack integrations, authentication, subscriptions, Playwright execution, mobile automation execution, or other non-essential features at this stage.
+
+The goal is a reliable, professional AI-assisted QA deliverable generator that can become the foundation for my Etsy digital QA product.

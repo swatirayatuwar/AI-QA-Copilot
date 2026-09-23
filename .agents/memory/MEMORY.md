@@ -1,0 +1,1 @@
+- [Vite build defaults](vite-build-defaults.md) — artifact builds need safe PORT/BASE_PATH fallbacks when run outside managed workflows.
